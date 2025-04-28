@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhanki Art Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #333;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2em;
+            color: #ff7e5f;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #ff7e5f;
+        }
+        .hero {
+            background: url('art-background.jpg') no-repeat center center/cover;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .cta-button {
+            background: #ff7e5f;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: #feb47b;
+        }
+        .products {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+        .product {
+            background: white;
+            border-radius: 7px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 5px;
+            padding: 10px;
+            text-align: center;
+            width: 21%;
+            transition: transform 0.3s;
+        }
+        .product:hover {
+            transform: scale(1.05);
+        }
+        .product img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Jhanki Art Studio</h1>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Welcome to Jhanki Art Studio</h1>
+    <!--<a href="#gallery" class="cta-button">View Gallery</a>-->
+</section>
+
+
+<section id="gallery">
+    <h2>Gallery</h2>
+    <div class="products" id="product-list">
+        <!-- Products will be dynamically inserted here -->
+    </div>
+</section>
+
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>We are dedicated to creating beautiful art that inspires and uplifts.</p>
+</section>
+
+
+
+<footer>
+    <p>Jhanki Art Studio</p>
+    <p>Owner: Your Name</p>
+    <p>Contact: your.email@example.com | Phone: +1234567890</p>
+    <p>For queries, please reach out via WhatsApp or email.</p>
+</footer>
+
+<script>
+
+
+	// Product data stored directly in the JavaScript
+    const products = [
+        {
+            "name": "Art Piece 1",
+            "description": "A beautiful painting that captures the essence of nature.",
+            "price": "$200",
+            "image": "art1.jpg",
+            "whatsapp": "yourwhatsappnumber"
+        },
+        {
+            "name": "Art Piece 2",
+            "description": "An abstract sculpture that represents modern art.",
+            "price": "$300",
+            "image": "art1.jpg",
+            "whatsapp": "yourwhatsappnumber"
+        },
+        {
+            "name": "Art Piece 3",
+            "description": "A vibrant mural that adds color to any space.",
+            "price": "$150",
+            "image": "art1.jpg",
+            "whatsapp": "yourwhatsappnumber"
+        },
+        {
+            "name": "Art Piece 3",
+            "description": "A vibrant mural that adds color to any space.",
+            "price": "$150",
+            "image": "art3.jpg",
+            "whatsapp": "yourwhatsappnumber"
+        },
+        {
+            "name": "Art Piece 3",
+            "description": "A vibrant mural that adds color to any space.",
+            "price": "$150",
+            "image": "art3.jpg",
+            "whatsapp": "yourwhatsappnumber"
+        },
+        {
+            "name": "Art Piece 3",
+            "description": "A vibrant mural that adds color to any space.",
+            "price": "$150",
+            "image": "art3.jpg",
+            "whatsapp": "yourwhatsappnumber"
+        },
+        {
+            "name": "Art Piece 3",
+            "description": "A vibrant mural that adds color to any space.",
+            "price": "$150",
+            "image": "art3.jpg",
+            "whatsapp": "yourwhatsappnumber"
+        }
+    ];
+
+    // Function to display products
+    function displayProducts() {
+        const productList = document.getElementById('product-list');
+        products.forEach(product => {
+            const productDiv = document.createElement('div');
+            productDiv.className = 'product';
+            productDiv.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <h2>${product.name}</h2>
+                <p>${product.description}</p>
+                <p>Price: ${product.price}</p>
+                <a href="https://wa.me/${product.whatsapp}?text=I%20want%20to%20order%20${product.name}" target="_blank">Order on WhatsApp</a>
+            `;
+            productList.appendChild(productDiv);
+        });
+    }
+
+    // Call the function to display products
+    displayProducts();
+	
+	
+</script>
+
+</body>
+</html>
